@@ -25,17 +25,26 @@
 
 package org.spongepowered.api.event.cause;
 
+import org.spongepowered.api.entity.Entity;
+
 /**
- * A generic cause.
+ * Represents the cause of an {@link Entity}'s health changing.
  */
-public interface Cause
+public interface HealthChangeCause extends Cause
 {
     
     /**
-     * Gets the name of this damage cause.
+     * Gets whether this damage cause's damage will be scaled by difficulty.
      * 
-     * @return The name
+     * @return Scales with difficulty
      */
-    String getCauseName();
-
+    boolean isScaledByDifficulty();
+    
+    /**
+     * Gets whether this damage cause will still affect users in creative mode.
+     * 
+     * @return Affects creative mode users
+     */
+    boolean affectsCreativeMode();
+    
 }

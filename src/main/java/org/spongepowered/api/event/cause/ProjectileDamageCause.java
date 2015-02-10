@@ -23,14 +23,19 @@
  * THE SOFTWARE.
  */
 
-package org.spongepowered.api.event.cause.reason;
+package org.spongepowered.api.event.cause;
 
-import org.spongepowered.api.event.cause.Cause;
+import org.spongepowered.api.entity.projectile.Projectile;
+import org.spongepowered.api.entity.projectile.source.ProjectileSource;
 
-/**
- * A reason explains a {@link Cause}. For example, a cause might be a fire
- * block, and the reason would be fire spread.
- */
-public interface Reason {
+import com.google.common.base.Optional;
 
+//TODO docs
+public interface ProjectileDamageCause extends DamageCause
+{
+    
+    Optional<ProjectileSource> getProjectileSource();
+
+    Projectile getProjectile();
+    
 }

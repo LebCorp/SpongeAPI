@@ -25,17 +25,17 @@
 
 package org.spongepowered.api.event.cause;
 
-/**
- * A generic cause.
- */
-public interface Cause
-{
-    
-    /**
-     * Gets the name of this damage cause.
-     * 
-     * @return The name
-     */
-    String getCauseName();
+import org.spongepowered.api.entity.Entity;
 
+import com.google.common.base.Optional;
+
+/**
+ * A {@link DamageCause} which has 
+ */
+public interface EntityDamageCause extends DamageCause
+{
+
+  //TODO docs
+    Optional<Entity> getSourceEntity();
+    
 }

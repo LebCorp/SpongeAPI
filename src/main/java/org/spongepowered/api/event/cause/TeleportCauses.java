@@ -26,16 +26,20 @@
 package org.spongepowered.api.event.cause;
 
 /**
- * A generic cause.
+ * An enumeration of standard {@link TeleportCause}s.
  */
-public interface Cause
-{
-    
-    /**
-     * Gets the name of this damage cause.
-     * 
-     * @return The name
-     */
-    String getCauseName();
+public final class TeleportCauses {
 
+    // These values will not be null at runtime
+
+    public static final TeleportCause COMMAND = null;
+    public static final TeleportCause PLUGIN = null;
+    public static final TeleportCause NETHER_PORTAL = null;
+    public static final TeleportCause END_PORTAL = null;
+    public static final TeleportCause ENDER_PEARL = null;
+    public static final TeleportCause UNKNOWN = null;
+    
+    private TeleportCauses() {
+    }
+    
 }

@@ -25,21 +25,28 @@
 
 package org.spongepowered.api.event.cause;
 
-import com.google.common.base.Optional;
+import org.spongepowered.api.entity.Entity;
 
 /**
- * Something that keeps track of the cause.
+ * Represents a cause of damage against an {@link Entity}.
  */
-public interface CauseTracked {
+public interface DamageCause extends HealthChangeCause
+{
+    
+    //TODO type (eg. fire, projectile, etc.)
 
     /**
-     * Get the last cause.
-     *
-     * <p>Parent causes, including possibly the root cause, can be
-     * retrieved using {@link Cause#getParent()}.</p>
-     *
-     * @return The last cause
+     * Gets whether this damage cause ignores the affected entities armor.
+     * 
+     * @return Ignores armor
      */
-    Optional<Cause> getCause();
-
+    boolean bypassesArmor();
+    
+    /**
+     * Gets whether this damage cause may be blocked.
+     * 
+     * @return May be blocked
+     */
+    boolean isBlockable();
+    
 }

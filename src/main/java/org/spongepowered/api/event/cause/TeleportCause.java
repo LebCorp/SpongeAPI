@@ -25,17 +25,14 @@
 
 package org.spongepowered.api.event.cause;
 
+import org.spongepowered.api.event.entity.EntityTeleportEvent;
+
 /**
- * A generic cause.
+ * Represents the cause of an {@link EntityTeleportEvent}.
  */
-public interface Cause
+public interface TeleportCause extends Cause
 {
     
-    /**
-     * Gets the name of this damage cause.
-     * 
-     * @return The name
-     */
-    String getCauseName();
-
+    //TODO anything to add here?
+    
 }

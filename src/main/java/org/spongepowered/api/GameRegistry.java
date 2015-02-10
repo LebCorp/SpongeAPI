@@ -26,6 +26,7 @@
 package org.spongepowered.api;
 
 import com.google.common.base.Optional;
+
 import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.block.meta.BannerPatternShape;
 import org.spongepowered.api.block.meta.NotePitch;
@@ -33,6 +34,7 @@ import org.spongepowered.api.block.meta.SkullType;
 import org.spongepowered.api.effect.particle.ParticleEffectBuilder;
 import org.spongepowered.api.effect.particle.ParticleType;
 import org.spongepowered.api.effect.sound.SoundType;
+import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.hanging.art.Art;
 import org.spongepowered.api.entity.living.animal.DyeColor;
@@ -45,6 +47,14 @@ import org.spongepowered.api.entity.living.monster.SkeletonType;
 import org.spongepowered.api.entity.living.villager.Career;
 import org.spongepowered.api.entity.living.villager.Profession;
 import org.spongepowered.api.entity.player.gamemode.GameMode;
+import org.spongepowered.api.entity.projectile.Projectile;
+import org.spongepowered.api.event.cause.DamageCause;
+import org.spongepowered.api.event.cause.DamageCauseBuilder;
+import org.spongepowered.api.event.cause.DamageCauseBuilder.EntityDamageCauseBuilder;
+import org.spongepowered.api.event.cause.DamageCauseBuilder.ProjectileDamageCauseBuilder;
+import org.spongepowered.api.event.cause.EntityDamageCause;
+import org.spongepowered.api.event.cause.HealthChangeCause;
+import org.spongepowered.api.event.cause.ProjectileDamageCause;
 import org.spongepowered.api.item.Enchantment;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStackBuilder;
@@ -535,5 +545,35 @@ public interface GameRegistry {
      * @return The list of all available {@link BannerPatternShape}s
      */
     List<BannerPatternShape> getBannerPatternShapes();
+    
+    /**
+     * Gets the {@link HealthChangeCause} with the given name.
+     * 
+     * @param name The name of the cause
+     * @return The {@link HealthChangeCause} or Optional.absent() if not found
+     */
+    Optional<HealthChangeCause> getHealthChangeChause(String name);
+    
+    /**
+     * Gets the {@link DamageCause} with the given name.
+     * 
+     * @param name The name of the cause
+     * @return The {@link DamageCause} or Optional.absent() if not found
+     */
+    Optional<DamageCause> getDamageChause(String name);
+    
+    /**
+     * Gets a new {@link DamageCauseBuilder} for creating custom damage causes.
+     * 
+     * @return A new builder
+     */
+    DamageCauseBuilder getDamageCauseBuilder();
+    
+    //TODO docs
+    
+    EntityDamageCauseBuilder getEntityDamageCauseBuilder(Entity source);
+    EntityDamageCause getEntityDamageCause(Entity source, DamageCause baseCause);
+    ProjectileDamageCauseBuilder getProjectileDamageCauseBuilder(Projectile projectile);
+    ProjectileDamageCause getProjectileDamageCause(Projectile projectile, DamageCause baseCause);
 
 }
